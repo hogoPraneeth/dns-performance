@@ -1,0 +1,113 @@
+
+DNS Performance Tracker
+
+
+
+Performance metrics for top sites can be used as a benchmark for others to compare to. Your challenge is to create a program to track these metrics for the top sites' DNS servers.
+
+
+
+What To Do
+
+
+
+Write a C++ (not C) program for Linux or BSD (macOS counts) that periodically sends DNS queries to the name servers of the top 10 sites on the web (according to Alexa) and stores the latency values in a MySQL table. The frequency of queries should be specified by the user on command line.
+
+
+
+To make sure you're actually measuring the performance of the name server and not your local DNS cache, you should always prepend a random string to each domain. For example, to measure performance to foo.bar, send a query to <random>.foo.bar (e.g., 1234xpto.foo.bar).
+
+
+
+Besides the time series values, your program should keep track of some statistics about each domain in the MySQL database:
+
+Average query time
+Standard deviation of query times
+Number of queries made so far
+Timestamp of first and last query made
+If the program is run multiple times, it should continue where it left off. That is, the existing statistics should continue to be updated, rather than being reset.
+
+
+
+How To Do It
+
+
+
+Use mysql++ (http://tangentsoft.net/mysql++/) to interact with MySQL.
+
+
+
+Use ldns (http://www.nlnetlabs.nl/projects/ldns/) for generating DNS queries.
+
+
+
+For your convenience, here are the top 10 domains:
+
+
+
+Rank
+
+Domain
+
+1
+
+google.com
+
+2
+
+youtube.com
+
+3
+
+facebook.com
+
+4
+
+baidu.com
+
+5
+
+wikipedia.org
+
+6
+
+yahoo.com
+
+7
+
+google.co.in
+
+8
+
+reddit.com
+
+9
+
+qq.com
+
+10
+
+taobao.com
+
+
+
+Submitting Your Solution
+
+
+
+It typically takes somewhere between 4 and 6 hours to complete a basic, working version of this challenge. However, as long as you submit your solution within a week, you are welcome to spend as much or as little time on it as you would like. Just keep in mind that we are a lot more interested in well-engineered, production-quality code than we are in a fully completed challenge. If you find yourself taking significantly longer than 6 hours to complete a basic, working version, or you simply have no more time to spend on it, please submit what you have so far. We will be happy to evaluate it. Above all, have fun!
+
+
+
+A Note On Results
+
+
+
+We sincerely appreciate you taking the time to work on this challenge, and we hope you enjoy it. Rest assured, we will evaluate it fairly and thoroughly, and get back to you in a timely manner. Unfortunately, we are unable to provide detailed feedback on each and every submission. We will be discussing the details of your challenge with you in the event you move forward to the final interview phase.
+
+
+_________________________________________
+
+
+Please submit here:
+https://app.greenhouse.io/tests/5b93e127ce8541601fd139588147ed60
