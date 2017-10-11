@@ -25,6 +25,8 @@
 /* Begin PBXFileReference section */
 		1073E8111F8C056E00B6D61F /* dns_perf */ = {isa = PBXFileReference; explicitFileType = "compiled.mach-o.executable"; includeInIndex = 0; path = dns_perf; sourceTree = BUILT_PRODUCTS_DIR; };
 		1073E8141F8C056E00B6D61F /* main.cpp */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.cpp; path = main.cpp; sourceTree = "<group>"; };
+		1073E81B1F8EC9DA00B6D61F /* Wiki_Make */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = Wiki_Make; sourceTree = "<group>"; };
+		1073E81D1F8ECB0800B6D61F /* README-Mac-OS-X.txt */ = {isa = PBXFileReference; lastKnownFileType = text; name = "README-Mac-OS-X.txt"; path = "mysql++-3.2.3/README-Mac-OS-X.txt"; sourceTree = "<group>"; };
 		E876A5701F8C152C007D0165 /* README */ = {isa = PBXFileReference; lastKnownFileType = text; path = README; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
@@ -44,6 +46,7 @@
 			children = (
 				1073E8131F8C056E00B6D61F /* dns_perf */,
 				1073E8121F8C056E00B6D61F /* Products */,
+				1073E81C1F8ECB0800B6D61F /* Frameworks */,
 			);
 			sourceTree = "<group>";
 		};
@@ -60,8 +63,17 @@
 			children = (
 				1073E8141F8C056E00B6D61F /* main.cpp */,
 				E876A5701F8C152C007D0165 /* README */,
+				1073E81B1F8EC9DA00B6D61F /* Wiki_Make */,
 			);
 			path = dns_perf;
+			sourceTree = "<group>";
+		};
+		1073E81C1F8ECB0800B6D61F /* Frameworks */ = {
+			isa = PBXGroup;
+			children = (
+				1073E81D1F8ECB0800B6D61F /* README-Mac-OS-X.txt */,
+			);
+			name = Frameworks;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
