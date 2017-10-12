@@ -5,7 +5,7 @@
 #define HAVE_DLFCN_H 1
 
 /* Define if you have __gnu_cxx:slist container in <ext/slist> */
-#define HAVE_EXT_SLIST 1
+/* #undef HAVE_EXT_SLIST */
 
 /* Define if you have ::slist container in <slist> */
 /* #undef HAVE_GLOBAL_SLIST */

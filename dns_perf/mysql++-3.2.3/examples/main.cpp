@@ -25,10 +25,11 @@
  USA
 ***********************************************************************/
 
-#include "cmdline.h"
-#include "printdata.h"
+#include <cmdline.h>
+//#include <printdata.h>
 
 #include <mysql++.h>
+
 
 #include <iostream>
 #include <iomanip>
@@ -38,16 +39,20 @@ using namespace std;
 int
 main(int argc, char *argv[])
 {
+    cout << "here\n";
+    char* argv1[] = {"praneethp", "localhost", "password"};
+    int argc1 = 3;
+
 	// Get database access parameters from command line
-	mysqlpp::examples::CommandLine cmdline(argc, argv);
+	mysqlpp::examples::CommandLine cmdline(argc1, argv1);
 	if (!cmdline) {
 		return 1;
 	}
 
 	// Connect to the sample database.
 	mysqlpp::Connection conn(false);
-	if (conn.connect(mysqlpp::examples::db_name, cmdline.server(),
-			cmdline.user(), cmdline.pass())) {
+	if (conn.connect(mysqlpp::examples::db_name, "localhost",
+			"root", "password")) {
 		// Retrieve a subset of the sample stock table set up by resetdb
 		// and display it.
 		mysqlpp::Query query = conn.query("select item from stock");
@@ -70,4 +75,5 @@ main(int argc, char *argv[])
 		cerr << "DB connection failed: " << conn.error() << endl;
 		return 1;
 	}
+    return 0;
 }
