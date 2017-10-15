@@ -25,7 +25,7 @@
 ***********************************************************************/
 
 #define MYSQLPP_NOT_HEADER
-#include <common.h>
+#include "common.h"
 
 #include "field_names.h"
 #include "result.h"

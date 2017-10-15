@@ -25,10 +25,10 @@
  USA
 ***********************************************************************/
 
-#include <cmdline.h>
+#include "cmdline.h"
 //#include <printdata.h>
 
-#include <mysql++.h>
+#include "mysql++.h"
 
 
 #include <iostream>
