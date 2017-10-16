@@ -7,7 +7,10 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
-		E8AF820F1F8FAEAE0089C6F4 /* app_main.cpp in Sources */ = {isa = PBXBuildFile; fileRef = E8AF820E1F8FAEAE0089C6F4 /* app_main.cpp */; };
+		E81F922C1F92F26200FCCFA9 /* DnsPerfApp.cpp in Sources */ = {isa = PBXBuildFile; fileRef = E81F922A1F92F26200FCCFA9 /* DnsPerfApp.cpp */; };
+		E81F922F1F9427AD00FCCFA9 /* DnsFacade.cpp in Sources */ = {isa = PBXBuildFile; fileRef = E81F922D1F9427AD00FCCFA9 /* DnsFacade.cpp */; };
+		E8580FF61F92E1C9007BD2DE /* DataBaseConnector.cpp in Sources */ = {isa = PBXBuildFile; fileRef = E8580FF41F92E1C9007BD2DE /* DataBaseConnector.cpp */; };
+		E8AF820F1F8FAEAE0089C6F4 /* AppMain.cpp in Sources */ = {isa = PBXBuildFile; fileRef = E8AF820E1F8FAEAE0089C6F4 /* AppMain.cpp */; };
 		E8AF83071F8FD5660089C6F4 /* scopedconnection.cpp in Sources */ = {isa = PBXBuildFile; fileRef = E8AF82B81F8FD55F0089C6F4 /* scopedconnection.cpp */; };
 		E8AF83081F8FD5660089C6F4 /* field_names.cpp in Sources */ = {isa = PBXBuildFile; fileRef = E8AF82B91F8FD55F0089C6F4 /* field_names.cpp */; };
 		E8AF83091F8FD5660089C6F4 /* sql_buffer.cpp in Sources */ = {isa = PBXBuildFile; fileRef = E8AF82BB1F8FD55F0089C6F4 /* sql_buffer.cpp */; };
@@ -60,8 +63,14 @@
 		1073E8111F8C056E00B6D61F /* dns_perf */ = {isa = PBXFileReference; explicitFileType = "compiled.mach-o.executable"; includeInIndex = 0; path = dns_perf; sourceTree = BUILT_PRODUCTS_DIR; };
 		1073E81B1F8EC9DA00B6D61F /* Wiki_Make */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = Wiki_Make; sourceTree = "<group>"; };
 		1073E81D1F8ECB0800B6D61F /* README-Mac-OS-X.txt */ = {isa = PBXFileReference; lastKnownFileType = text; name = "README-Mac-OS-X.txt"; path = "mysql++-3.2.3/README-Mac-OS-X.txt"; sourceTree = "<group>"; };
+		E81F922A1F92F26200FCCFA9 /* DnsPerfApp.cpp */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.cpp; path = DnsPerfApp.cpp; sourceTree = "<group>"; };
+		E81F922B1F92F26200FCCFA9 /* DnsPerfApp.hpp */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.h; path = DnsPerfApp.hpp; sourceTree = "<group>"; };
+		E81F922D1F9427AD00FCCFA9 /* DnsFacade.cpp */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.cpp; path = DnsFacade.cpp; sourceTree = "<group>"; };
+		E81F922E1F9427AD00FCCFA9 /* DnsFacade.hpp */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.h; path = DnsFacade.hpp; sourceTree = "<group>"; };
+		E8580FF41F92E1C9007BD2DE /* DataBaseConnector.cpp */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.cpp; path = DataBaseConnector.cpp; sourceTree = "<group>"; };
+		E8580FF51F92E1C9007BD2DE /* DataBaseConnector.hpp */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.h; path = DataBaseConnector.hpp; sourceTree = "<group>"; };
 		E876A5701F8C152C007D0165 /* Coding challenge */ = {isa = PBXFileReference; lastKnownFileType = text; path = "Coding challenge"; sourceTree = "<group>"; };
-		E8AF820E1F8FAEAE0089C6F4 /* app_main.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; name = app_main.cpp; path = dns_perf/DnsPerfMon/app_main.cpp; sourceTree = SOURCE_ROOT; };
+		E8AF820E1F8FAEAE0089C6F4 /* AppMain.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; name = AppMain.cpp; path = dns_perf/DnsPerfMon/AppMain.cpp; sourceTree = SOURCE_ROOT; };
 		E8AF82B21F8FBCBD0089C6F4 /* libmysqlcppconn.7.1.1.9.dylib */ = {isa = PBXFileReference; lastKnownFileType = "compiled.mach-o.dylib"; name = libmysqlcppconn.7.1.1.9.dylib; path = "mysql-connector-c++-1.1.9-macos10.12-x86-64bit/lib/libmysqlcppconn.7.1.1.9.dylib"; sourceTree = "<group>"; };
 		E8AF82B31F8FBCBD0089C6F4 /* libmysqlcppconn-static.a */ = {isa = PBXFileReference; lastKnownFileType = archive.ar; name = "libmysqlcppconn-static.a"; path = "mysql-connector-c++-1.1.9-macos10.12-x86-64bit/lib/libmysqlcppconn-static.a"; sourceTree = "<group>"; };
 		E8AF82B61F8FBD6C0089C6F4 /* mysql-connector-c++-1.1.9-macos10.12-x86-64bit */ = {isa = PBXFileReference; lastKnownFileType = folder; path = "mysql-connector-c++-1.1.9-macos10.12-x86-64bit"; sourceTree = "<group>"; };
@@ -289,7 +298,13 @@
 		E8580FF31F92E0C3007BD2DE /* DnsPerfMon */ = {
 			isa = PBXGroup;
 			children = (
-				E8AF820E1F8FAEAE0089C6F4 /* app_main.cpp */,
+				E8AF820E1F8FAEAE0089C6F4 /* AppMain.cpp */,
+				E8580FF41F92E1C9007BD2DE /* DataBaseConnector.cpp */,
+				E8580FF51F92E1C9007BD2DE /* DataBaseConnector.hpp */,
+				E81F922A1F92F26200FCCFA9 /* DnsPerfApp.cpp */,
+				E81F922B1F92F26200FCCFA9 /* DnsPerfApp.hpp */,
+				E81F922D1F9427AD00FCCFA9 /* DnsFacade.cpp */,
+				E81F922E1F9427AD00FCCFA9 /* DnsFacade.hpp */,
 			);
 			path = DnsPerfMon;
 			sourceTree = "<group>";
@@ -351,8 +366,10 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				E8580FF61F92E1C9007BD2DE /* DataBaseConnector.cpp in Sources */,
 				E8AF831E1F8FD5660089C6F4 /* uds_connection.cpp in Sources */,
 				E8AF830D1F8FD5660089C6F4 /* manip.cpp in Sources */,
+				E81F922C1F92F26200FCCFA9 /* DnsPerfApp.cpp in Sources */,
 				E8AF83171F8FD5660089C6F4 /* options.cpp in Sources */,
 				E8AF83131F8FD5660089C6F4 /* beemutex.cpp in Sources */,
 				E8AF831F1F8FD5660089C6F4 /* result.cpp in Sources */,
@@ -370,6 +387,7 @@
 				E8AF83181F8FD5660089C6F4 /* transaction.cpp in Sources */,
 				E8AF83101F8FD5660089C6F4 /* qparms.cpp in Sources */,
 				E8AF83151F8FD5660089C6F4 /* datetime.cpp in Sources */,
+				E81F922F1F9427AD00FCCFA9 /* DnsFacade.cpp in Sources */,
 				E8AF831D1F8FD5660089C6F4 /* vallist.cpp in Sources */,
 				E8AF83111F8FD5660089C6F4 /* sqlstream.cpp in Sources */,
 				E8AF831A1F8FD5660089C6F4 /* type_info.cpp in Sources */,
@@ -377,7 +395,7 @@
 				E8AF830B1F8FD5660089C6F4 /* query.cpp in Sources */,
 				E8AF83211F8FD5660089C6F4 /* null.cpp in Sources */,
 				E8AF83221F8FD5660089C6F4 /* field_types.cpp in Sources */,
-				E8AF820F1F8FAEAE0089C6F4 /* app_main.cpp in Sources */,
+				E8AF820F1F8FAEAE0089C6F4 /* AppMain.cpp in Sources */,
 				E8AF831C1F8FD5660089C6F4 /* myset.cpp in Sources */,
 				E8AF83081F8FD5660089C6F4 /* field_names.cpp in Sources */,
 				E8AF830E1F8FD5660089C6F4 /* ssqls2.cpp in Sources */,
@@ -393,7 +411,7 @@
 			buildSettings = {
 				ALWAYS_SEARCH_USER_PATHS = NO;
 				CLANG_ANALYZER_NONNULL = YES;
-				CLANG_CXX_LANGUAGE_STANDARD = "gnu++0x";
+				CLANG_CXX_LANGUAGE_STANDARD = "gnu++14";
 				CLANG_CXX_LIBRARY = "libc++";
 				CLANG_ENABLE_MODULES = YES;
 				CLANG_ENABLE_OBJC_ARC = YES;
@@ -446,7 +464,7 @@
 			buildSettings = {
 				ALWAYS_SEARCH_USER_PATHS = NO;
 				CLANG_ANALYZER_NONNULL = YES;
-				CLANG_CXX_LANGUAGE_STANDARD = "gnu++0x";
+				CLANG_CXX_LANGUAGE_STANDARD = "gnu++14";
 				CLANG_CXX_LIBRARY = "libc++";
 				CLANG_ENABLE_MODULES = YES;
 				CLANG_ENABLE_OBJC_ARC = YES;

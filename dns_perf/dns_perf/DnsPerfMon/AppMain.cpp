@@ -26,9 +26,9 @@
 ***********************************************************************/
 
 #include "cmdline.h"
-//#include <printdata.h>
+#include <ctime>
 
-#include "mysql++.h"
+#include "DataBaseConnectorInterface.hpp"
 
 
 #include <iostream>
@@ -216,6 +216,9 @@ int
 main(int argc, char *argv[])
 {
     cout << "here\n";
+    
+    cout << "Time: " <<  << endl;
+    time = clock_gettime(CLOCK_REALTIME, &start);
     setup (argc, argv);
     char* argv1[] = {"praneethp", "localhost", "password"};
     int argc1 = 3;
