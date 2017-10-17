@@ -11,12 +11,13 @@
 
 
 #include <string>
+#include <arpa/nameser.h>
 
 namespace  Dns {
     //DNS Header : Under works
     struct DNS_HEADER
     {
-        unsigned int id; // identification number
+        unsigned short id; // identification number
     
         unsigned char rd :1; // recursion desired
         unsigned char tc :1; // truncated message
@@ -47,8 +48,7 @@ namespace  Dns {
     // Abstract class for DNS
     class DnsFacade {
     public:
-        DnsFacade(const std::string& server);
-        DnsFacade() = delete;
+        DnsFacade();
         DnsFacade(const DnsFacade&) = delete;
         DnsFacade& operator=(const DnsFacade&) = delete;
         DnsFacade& operator=(const DnsFacade&&) = delete;
@@ -61,13 +61,11 @@ namespace  Dns {
         void RecordParseHelper (unsigned char *buffer, size_t r,
                                 const char *section, ns_sect s,
                                 int idx, ns_msg *m);
-    private:
-        std::string host_serv_;        
     };
+
     class LinuxDnsFacade : public DnsFacade {
     public:
-        LinuxDnsFacade(const std::string& website);
-        LinuxDnsFacade() = delete;
+        LinuxDnsFacade();
         LinuxDnsFacade(const LinuxDnsFacade&) = delete;
         LinuxDnsFacade& operator=(const LinuxDnsFacade&) = delete;
         LinuxDnsFacade& operator=(const LinuxDnsFacade&&) = delete;

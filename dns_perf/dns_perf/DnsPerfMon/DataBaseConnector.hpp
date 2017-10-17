@@ -15,6 +15,7 @@
 
 namespace Db {
     enum class DbError {
+        NOERROR,
         ConnectionFail,
         CreateDBFail,
         CreateTableFail,
@@ -30,13 +31,20 @@ namespace Db {
      */
     class DbConnInterface {
     public:
-        virtual DbError CreateDb() = 0;
+        DbConnInterface(std::string host, std::string user,
+            std::string password) :
+            host_name_(host) , user_name_(user), password_(password) {};
+        virtual DbError CreateDb(std::string db_name) = 0;
         virtual DbError CreateTable() = 0;
         virtual DbError UpdateTime(const std::string website,
-            const std::chrono::high_resolution_clock::time_point) = 0;
-        virtual std::chrono::high_resolution_clock::time_point
-            GetTime(const std::string website) = 0;
-    private:
+            const std::chrono::duration<long long>) = 0;
+        virtual std::chrono::duration<long long>
+            GetLatency(const std::string website) = 0;
+    protected:
+        std::string host_name_;
+        std::string user_name_;
+        std::string password_; // currently a plain test. Can use encryption
+        std::string db_name_;
     };
 
     /**
@@ -44,12 +52,18 @@ namespace Db {
      */
     class MySqlDbConn : public DbConnInterface {
     public:
-        DbError CreateDb();
+        MySqlDbConn(std::string host, std::string user_name,
+                    std::string password);
+        DbError CreateDb(const std::string& db_name);
         DbError CreateTable();
         DbError UpdateTime(const std::string website,
-            const std::chrono::high_resolution_clock::time_point);
-        std::chrono::high_resolution_clock::time_point
-            GetTime(const std::string website);
+            const std::chrono::duration<long long>);
+        std::chrono::duration<long long>
+            GetLatency(const std::string website);
+    private:
+        std::string table_name_{"dns_latency"}; /**< hardcoded in source
+                                                 **< code as this is
+                                                 **< application specific. */
     };
 }
 

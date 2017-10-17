@@ -1,5 +1,5 @@
 //
-//  DnsFacade.cpp
+//  DnsFacade.cpp. A DNS query helped class.
 //  dns_perf
 //
 //  Created by Praneeth Patil on 10/15/17.
@@ -8,7 +8,7 @@
 
 #include <iostream>
 
-#include <arpa/nameser.h>
+
 #include <netinet/in.h>
 #include <arpa/inet.h>
 #include <sys/types.h>
@@ -23,10 +23,9 @@
 using namespace std;
 using namespace Dns;
 
-DnsFacade::DnsFacade(const std::string& server) : host_serv_(server) {}
+DnsFacade::DnsFacade() {}
 
-LinuxDnsFacade::LinuxDnsFacade(const std::string& server) :
-    DnsFacade(server){};
+LinuxDnsFacade::LinuxDnsFacade() : DnsFacade(){};
 
 int LinuxDnsFacade::RunQuery(const std::string& website) {
     res_init();
@@ -35,44 +34,31 @@ int LinuxDnsFacade::RunQuery(const std::string& website) {
     unsigned char query_buffer[NS_MAXDNAME];
 
     /* c_in = Intenet, ns_t_srv = */
-    response= res_query(website.c_str(), ns_c_in, ns_t_srv,
+    string mangled_web = GenerateRandomStr(website);
+    response= res_query(mangled_web.c_str(), ns_c_in, ns_t_srv,
                         query_buffer, sizeof(query_buffer));
     if (response < 0) {
-        cerr << "Error looking up service: '" << website << "'" << endl;
         return -1;
     }
-    cout << "response :" << response << endl;
     return GetResponseCode(query_buffer, response);
 }
 
 unsigned int DnsFacade::GetResponseCode(unsigned char* buf, int response) {
     DNS_HEADER *hdr = reinterpret_cast<DNS_HEADER*> (buf);
-    int nameservers = ntohs (hdr->ans_count);
-    cout << "nameservers: " << nameservers << endl;
-    ns_msg nsMsg;
-    int  k = ns_initparse((unsigned char*)buf, response, &nsMsg);
-    if (k == -1) {
-        std::cerr << errno << " " << strerror (errno) << "\n";
-        return 1;
-    }
-    for (int i = 0; i < nameservers; ++i) {
-        RecordParseHelper(buf, response, "nameservers", ns_s_ns, i, &nsMsg);
-    }
-    return NOERROR;
+    return (unsigned int)hdr->rcode;
 }
 
-/* Work in progress */
+/* Work in progress: For getting more data*/
 void DnsFacade::RecordParseHelper (unsigned char *buffer, size_t r,
                                    const char *section, ns_sect s,
-                                   int idx, ns_msg *m) {
-    
+                                   int idx, ns_msg *m) {    
     ns_rr rr;
     int k = ns_parserr (m, s, idx, &rr);
     if (k == -1) {
         std::cerr << errno << " " << strerror (errno) << "\n";
         return;
     }
-    
+
     std::cout << section << " " << ns_rr_name (rr) << " "
         << ns_rr_type (rr) << " " << ns_rr_class (rr)
         << ns_rr_ttl (rr) << " ";
@@ -89,3 +75,10 @@ void DnsFacade::RecordParseHelper (unsigned char *buffer, size_t r,
     ns_name_ntop (name, name2, size);
     std::cout << pref << " " << name2;
 }
+
+std::string DnsFacade::GenerateRandomStr(const std::string& website) {
+    // use random humber generator % 26 for a random %6 times and prepend it
+    // with "." and return.
+    //
+    return website;
+};
